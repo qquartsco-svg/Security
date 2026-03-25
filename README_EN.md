@@ -45,6 +45,23 @@ What it does not do yet:
 
 So MPK is the kernel that decides **who may read** and **how far meaning may open**.
 
+## Key score distinctions
+
+Two scores may look similar at first glance, but they are not the same.
+
+- `resonance_index`
+  - the resonance or alignment between live channels and remembered channels
+  - reflects channel agreement, quality, and weighting structure
+
+- `identity_score`
+  - the main score for deciding whether the current subject is the remembered owner
+  - in the current version it starts from resonance, but future versions may blend in trust anchors, long-term memory, and stronger policy logic
+
+In short:
+
+- `resonance_index` = resonance
+- `identity_score` = owner-identity judgment score
+
 ## Why this concept feels unfamiliar
 
 This package does not look like a normal login package because its goal is not
@@ -131,6 +148,20 @@ Important:
 - The real raw-data vault and decrypt/render boundary are still external.
 - The long-term adaptive memory engine is still ahead.
 
+To make the phases more concrete:
+
+- `liquid`
+  - mostly metadata / masked summaries
+  - little or no personal meaning is open
+
+- `semi_frozen`
+  - limited low-sensitivity operational meaning
+  - for example, operational tier or restricted state summaries
+
+- `frozen`
+  - personal / executive interpretation windows may open
+  - enough convergence has formed for the remembered user
+
 Important:
 
 - The dynamics layer is no longer observational only.
@@ -141,6 +172,18 @@ The package now also has one more layer of practical hardening:
 
 - `RawStateVault` may require both phase eligibility and sufficient `collapse_score`
 - `IdentityMemoryStore` may apply `forgetting` and `drift penalty` instead of only growing forever
+
+One boundary is especially important:
+
+- `materialize`
+  - currently means a foundational decision about whether an interpretation window should open
+  - it is closer to masked/unmasked selection
+
+- `actual cryptographic reveal`
+  - real decryption
+  - key lifecycle
+  - secure storage
+  remains external responsibility
 
 Operational bridges now also begin to exist:
 
@@ -225,6 +268,16 @@ Recommended order:
 | session observer loop | foundational |
 | real cryptography / key lifecycle | external responsibility |
 | full audit chain | not yet implemented |
+
+Status guide:
+
+- `implemented`
+  - connected to the public API
+  - verified by tests
+
+- `foundational`
+  - scaffold or minimum loop exists
+  - but not yet a full production-grade subsystem
 
 ## Extension
 

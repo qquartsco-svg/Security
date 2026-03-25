@@ -46,6 +46,23 @@
 
 즉 MPK는 **“누가 읽을 수 있는가”와 “어느 정도까지 의미가 열리는가”를 결정하는 커널**이다.
 
+## 핵심 점수 구분
+
+이 패키지에는 이름이 비슷해 보이는 점수가 둘 있다.
+
+- `resonance_index`
+  - 현재 입력 채널과 장기 기억 채널이 얼마나 잘 맞물리는지 보는 **공명도**
+  - 채널 일치, quality, 가중치 구조를 반영한다
+
+- `identity_score`
+  - 현재 세션이 “기억된 주인과 같은 사람인가”를 보는 **동일성 점수**
+  - 현재 버전에서는 `resonance_index`를 기반으로 시작하지만, 앞으로 trust anchor, 장기 기억, 정책 블렌딩이 더 들어갈 수 있다
+
+즉 간단히 말하면:
+
+- `resonance_index` = 공명
+- `identity_score` = 주인 동일성 판단의 주 점수
+
 ## 왜 생소한 개념인가
 
 이 패키지는 일반적인 로그인 패키지처럼 보이지 않는다.  
@@ -148,6 +165,20 @@ print(decision.phase, decision.allowed_tiers, decision.score_bundle.resonance_in
 - 1층의 실제 데이터 저장/복호 계층은 아직 외부 책임이다.
 - 7층도 기초 훅은 있지만, 완전한 감사·망각 시스템은 아직 아니다.
 
+위상을 더 직관적으로 보면:
+
+- `liquid`
+  - metadata / masked summary 위주
+  - 개인 의미는 거의 안 열림
+
+- `semi_frozen`
+  - 저민감 운영 정보 일부
+  - 예: operational tier, 제한된 상태 요약
+
+- `frozen`
+  - personal / executive tier까지 해석 가능
+  - 사용자가 맞다고 충분히 수렴된 상태
+
 ## 현재 구현 범위
 
 현재 MPK는 다음 질문에 답하는 커널이다.
@@ -169,6 +200,18 @@ print(decision.phase, decision.allowed_tiers, decision.score_bundle.resonance_in
 
 - `RawStateVault`는 `phase`뿐 아니라 `collapse_score`까지 보고 실제 materialize 여부를 결정할 수 있다.
 - `IdentityMemoryStore`는 누적만 하지 않고 `forgetting`과 `drift penalty`를 받을 수 있다.
+
+여기서 중요한 경계:
+
+- `materialize`
+  - 현재는 **해석 가능한 창을 열지 말지**를 결정하는 기초 구현이다
+  - masked/unmasked selection에 가깝다
+
+- `actual cryptographic reveal`
+  - 실제 암복호화
+  - 키 수명주기
+  - 보안 저장소
+  는 아직 외부 책임이다
 
 운영 시스템 연결도 시작됐다.
 
@@ -286,6 +329,16 @@ MPK는 기존 보안을 부정하지 않는다.
 | 세션 observer loop | 기초 구현 |
 | 실제 암복호/키 관리 | 아직 외부 책임 |
 | 완전한 감사 체인 | 아직 미구현 |
+
+상태 기준:
+
+- `구현됨`
+  - 공개 API에 연결되어 있고
+  - 테스트로 검증되는 기능
+
+- `기초 구현`
+  - 스캐폴딩 또는 최소 루프는 있지만
+  - 실제 상용 수준의 전체 기능은 아직 아닌 상태
 
 ## 확장
 

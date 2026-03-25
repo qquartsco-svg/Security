@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.10 - 2026-03-25
+
+- Tightened README pair around implementation boundaries:
+  - clarified `resonance_index` vs `identity_score`
+  - added concrete `liquid / semi_frozen / frozen` examples
+  - clarified that `materialize` is not the same as real cryptographic reveal
+  - defined `implemented` vs `foundational` status labels
+
 ## 0.1.9 - 2026-03-25
 
 - Added `docs/GITHUB_OVERVIEW.md` with suggested repository tagline/description/onboarding sequence.
