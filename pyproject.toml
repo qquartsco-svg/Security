@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memory-phase-kernel"
+version = "0.1.8"
+description = "Edge-oriented memory-aligned interpretability kernel (liquid/frozen phases, resonance scoring, access policy)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = [
+    "security",
+    "edge-ai",
+    "continuous-authentication",
+    "phase-transition",
+    "access-kernel",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools]
+packages = [
+    "memory_phase_kernel",
+    "memory_phase_kernel.extensions",
+    "memory_phase_kernel.integrations",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
