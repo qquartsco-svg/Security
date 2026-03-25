@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9 - 2026-03-25
+
+- Added `docs/GITHUB_OVERVIEW.md` with suggested repository tagline/description/onboarding sequence.
+- Added `scripts/verify_signature.py` for local SHA-256 manifest verification.
+- Expanded README pair with explicit integrity verification instructions.
+
 ## 0.1.8 - 2026-03-25
 
 - Expanded README pair with:

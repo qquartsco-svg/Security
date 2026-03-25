@@ -17,6 +17,7 @@ In plain language:
 - **Foundation layers**: [docs/FOUNDATION_LAYERS_EN.md](docs/FOUNDATION_LAYERS_EN.md)
 - **Security model**: [docs/SECURITY_MODEL_EN.md](docs/SECURITY_MODEL_EN.md)
 - **Integrity / signature**: [BLOCKCHAIN_INFO.md](BLOCKCHAIN_INFO.md), [PHAM_BLOCKCHAIN_LOG.md](PHAM_BLOCKCHAIN_LOG.md), `SIGNATURE.sha256`
+- **GitHub overview draft**: [docs/GITHUB_OVERVIEW.md](docs/GITHUB_OVERVIEW.md)
 - **Concept portfolio doc**: [design_workspace/MEMORY_ACCESS_KERNEL_DESIGN_EN.md](../design_workspace/MEMORY_ACCESS_KERNEL_DESIGN_EN.md)
 
 ## What this package does / does not do
@@ -69,6 +70,7 @@ So MPK cares less about one-time entry and more about **who may interpret data a
 ```bash
 cd _staging/MemoryPhase_Kernel
 python3 -m pytest tests/ -q
+python3 scripts/verify_signature.py
 ```
 
 ```python
@@ -160,6 +162,22 @@ It is most useful today in:
 - continuous-authentication experiments
 - security workbenches that non-specialists can extend layer by layer
 - systems that want to separate operational judgment from interpretation rights
+
+## Integrity and verification
+
+This repository uses “blockchain” in the sense of **integrity continuity**, not distributed consensus.
+
+- [BLOCKCHAIN_INFO.md](BLOCKCHAIN_INFO.md)
+- [PHAM_BLOCKCHAIN_LOG.md](PHAM_BLOCKCHAIN_LOG.md)
+- [SIGNATURE.sha256](SIGNATURE.sha256)
+
+Verification:
+
+```bash
+python3 scripts/verify_signature.py
+```
+
+The script checks that the SHA-256 manifest matches the current file contents.
 
 ## Relationship to other security models
 

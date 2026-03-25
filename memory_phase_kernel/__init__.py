@@ -96,4 +96,4 @@ __all__ = [
     "tiers_for_phase",
 ]
 
-__version__ = "0.1.7"
+__version__ = "0.1.8"

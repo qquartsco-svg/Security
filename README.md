@@ -18,6 +18,7 @@
 - **기초 레이어 맵**: [docs/FOUNDATION_LAYERS.md](docs/FOUNDATION_LAYERS.md)
 - **보안 모델 설명**: [docs/SECURITY_MODEL.md](docs/SECURITY_MODEL.md)
 - **무결성 / 서명**: [BLOCKCHAIN_INFO.md](BLOCKCHAIN_INFO.md), [PHAM_BLOCKCHAIN_LOG.md](PHAM_BLOCKCHAIN_LOG.md), `SIGNATURE.sha256`
+- **GitHub 소개 초안**: [docs/GITHUB_OVERVIEW.md](docs/GITHUB_OVERVIEW.md)
 - **철학·총망라 (레포 메타)**: [design_workspace/MEMORY_ACCESS_KERNEL_DESIGN.md](../design_workspace/MEMORY_ACCESS_KERNEL_DESIGN.md)
 
 ## 이 패키지가 하는 일 / 아직 안 하는 일
@@ -85,6 +86,7 @@ MPK가 지향하는 것은 그보다 아래에 있는 **기억 기반 접근 커
 ```bash
 cd _staging/MemoryPhase_Kernel
 python3 -m pytest tests/ -q
+python3 scripts/verify_signature.py
 ```
 
 ```python
@@ -193,6 +195,22 @@ print(decision.phase, decision.allowed_tiers, decision.score_bundle.resonance_in
 - 연속 인증과 세션 중 재잠금이 중요한 환경
 - 비전문가도 레이어를 이해하면서 확장할 수 있는 보안 워크벤치
 - Atom / Athena / Pharaoh 같은 운영 판단 결과를 해석 권한과 분리하고 싶은 환경
+
+## 무결성과 검증
+
+이 저장소는 “블록체인”을 분산 합의 체인이 아니라 **무결성 연속성** 의미로 사용한다.
+
+- [BLOCKCHAIN_INFO.md](/Users/jazzin/Desktop/00_BRAIN/_staging/MemoryPhase_Kernel/BLOCKCHAIN_INFO.md)
+- [PHAM_BLOCKCHAIN_LOG.md](/Users/jazzin/Desktop/00_BRAIN/_staging/MemoryPhase_Kernel/PHAM_BLOCKCHAIN_LOG.md)
+- [SIGNATURE.sha256](/Users/jazzin/Desktop/00_BRAIN/_staging/MemoryPhase_Kernel/SIGNATURE.sha256)
+
+검증 방법:
+
+```bash
+python3 scripts/verify_signature.py
+```
+
+이 스크립트는 서명 매니페스트에 기록된 SHA-256과 실제 파일 상태가 일치하는지 확인한다.
 
 ## 다른 보안 방식과의 관계
 

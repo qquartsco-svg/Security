@@ -1,5 +1,10 @@
 # PHAM_BLOCKCHAIN_LOG
 
+## Audit — 2026-03-25
+
+- Aligned `memory_phase_kernel.__version__` with `VERSION` / `pyproject.toml` (0.1.8).
+- Regenerated `SIGNATURE.sha256` after the version string fix.
+
 ## 0.1.7 - 2026-03-25
 
 - 운영 결과를 VaultRecord로 변환하는 브리지 추가
